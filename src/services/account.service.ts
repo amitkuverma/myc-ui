@@ -1,29 +1,53 @@
-import AccountDetails from '../models/user/account.model';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CookieService } from './cookie.service';
+import { environment } from 'src/environments/environment';
 
-class AccountDetailsService {
-  async createAccountDetails(data: any) {
-    return AccountDetails.create(data);
+@Injectable({
+  providedIn: 'root'
+})
+export class AccountDetailsService {
+  userId: any;
+  userName: any;
+  token: any;
+
+  constructor(private http: HttpClient, private cookiesService: CookieService) {
+    this.userId = this.cookiesService.decodeToken()?.userId;
+    this.userName = this.cookiesService.decodeToken()?.userName;
+    this.token = this.cookiesService.getCookie("token")
   }
 
-  async getAllAccountDetails() {
-    return AccountDetails.findAll();
+  getAllAccounts(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/account`);
   }
 
-  async getAccountDetailsById(accId: any) {
-    return AccountDetails.findByPk(accId);
+  // getAdminAccount(): Observable<any[]> {
+  //   return this.http.get<any[]>(`${environment.API_URL}/account/1`);
+  // }
+
+  getAccountById(userId:any): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/account/${userId}`);
   }
 
-  async getAccountDetailsByuserId(userId: any) {
-    return AccountDetails.findOne({ where: { userId: userId } });
+  saveAccount(account: any): Observable<any> {
+    account.userId = this.userId;
+    account.userName = this.userName;
+
+    return this.http.post(`${environment.API_URL}/account`, account);
+
+  }
+  
+  updateAccount(account: any, accId: number): Observable<any> {
+    account.userId = this.userId;
+    account.userName = this.userName;
+
+
+    return this.http.put(`${environment.API_URL}/account/${accId}`, account);
+
   }
 
-  async updateAccountDetails(accId: any, data: any) {
-    return AccountDetails.update(data, { where: { accId: accId } });
-  }
-
-  async deleteAccountDetails(accId: any) {
-    return AccountDetails.destroy({ where: { accId: accId } });
+  deleteAccount(accId: number): Observable<any> {
+    return this.http.delete(`${environment.API_URL}/account/${accId}`);
   }
 }
-
-export default new AccountDetailsService();

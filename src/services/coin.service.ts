@@ -1,39 +1,34 @@
-import Coin from '../models/user/coin.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Coin } from './coin.model'; // Adjust the path according to your structure
+import { environment } from 'src/environments/environment';
 
-class CoinService {
-  // Create a new coin
-  async createCoin(data: any) {
-    return Coin.create(data);
+@Injectable({
+  providedIn: 'root',
+})
+export class CoinService {
+  private baseUrl = environment.API_URL; // Adjust to your API endpoint
+
+  constructor(private http: HttpClient) {}
+
+  getCoins(): Observable<Coin[]> {
+    return this.http.get<Coin[]>(this.baseUrl+ '/coins');
   }
 
-  // Get all coins
-  async getAllCoins() {
-    return Coin.findAll();
+  getCoinById(id: number): Observable<Coin> {
+    return this.http.get<Coin>(`${this.baseUrl}/coin/${id}`);
   }
 
-  // Get coin by ID
-  async getCoinById(id: number) {
-    return Coin.findByPk(id);
+  createCoin(coin: Coin): Observable<Coin> {
+    return this.http.post<Coin>(this.baseUrl+'/coins', coin);
   }
 
-  // Update a coin by ID
-  async updateCoin(id: number, data: any) {
-    const coin = await Coin.findByPk(id);
-    if (coin) {
-      return coin.update(data);
-    }
-    throw new Error('Coin not found');
+  updateCoin(coin: Coin, id:any): Observable<Coin> {
+    return this.http.put<Coin>(`${this.baseUrl}/coin/${id}`, coin);
   }
 
-  // Delete a coin by ID
-  async deleteCoin(id: number) {
-    const coin = await Coin.findByPk(id);
-    if (coin) {
-      await coin.destroy();
-      return { message: 'Coin deleted successfully' };
-    }
-    throw new Error('Coin not found');
+  deleteCoin(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/coin/${id}`);
   }
 }
-
-export default new CoinService();

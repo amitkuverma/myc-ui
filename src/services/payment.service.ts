@@ -1,43 +1,38 @@
-import Payment from '../models/user/payment.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CookieService } from './cookie.service';
+import { environment } from 'src/environments/environment';
 
-class PaymentService {
-  async findPaymentByUserId(userId: any) {
-    const payment = await Payment.findOne({ where: { userId }});
-    if (!payment) {
-      throw new Error('User data not found in payment table');
-    }
-    return payment;
-  }
+@Injectable({
+    providedIn: 'root'
+})
+export class PaymentService {
+    token!: any;
+    headers!: any;
 
-  async findPaymentById(payId: any) {
-    const payment = await Payment.findByPk(payId);
-    if (!payment) {
-      throw new Error('User data not found in payment table');
-    }
-    return payment;
-  }
-
-  async getPaymentList() {
-    return await Payment.findAll();
-  }
-
-  async createPayment(data:any) {
-    return await Payment.create(data);
-  }
-
-  async updatePayment(updateData: Partial<Payment>) {
-    const payment = await Payment.findByPk(updateData.payId);
-
-    if (!payment) {
-      throw new Error('Payment not found');
+    constructor(private http: HttpClient, private cookiesService: CookieService) {
+        this.token = this.cookiesService.getCookie("token")
     }
 
-    return await payment.update(updateData);
-  }
+    createPayment(paymentData: any): Observable<any> {
+        return this.http.post(`${environment.API_URL}/payment`, paymentData);
+        
+    }
 
-  async deletePayment(payId: any) {
-    return Payment.destroy({ where: { payId: payId } });
-  }
+    getAllReferUser(): Observable<any> {                
+        return this.http.get(`${environment.API_URL}/payments`);
+    }
+
+    getUserReferrals(userId:any): Observable<any> {                
+        return this.http.get(`${environment.API_URL}/payment/${userId}`);
+    }
+    
+    updateUserStatus(body:any, payId:any): Observable<any> {                
+        return this.http.put(`${environment.API_URL}/payment/${payId}`, body);
+    }
+
+    uploadReceipt(receiptData: FormData): Observable<any> {        
+        return this.http.post(`${environment.API_URL}/payment/${this.cookiesService.decodeToken().userId}/upload-receipt`, receiptData);
+    }
 }
-
-export default new PaymentService();

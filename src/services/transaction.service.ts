@@ -1,34 +1,48 @@
-import Transaction from '../models/user/transaction.model';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CookieService } from './cookie.service';
+import { environment } from 'src/environments/environment';
 
-class TransactionService {
-  async createTransaction(data: any) {
-    return Transaction.create(data);
-  }
+@Injectable({
+    providedIn: 'root'
+})
+export class TransactionService {
+    token!: any;
+    headers!: any;
 
-  async getTransactionById(transId: any) {
-    return Transaction.findOne({ where: { transId: transId } });
-  }
+    constructor(private http: HttpClient, private cookiesService: CookieService) {
+        this.token = this.cookiesService.getCookie("token")
+    }
 
-  async getTransactionByUserId(userId: any) {
-    return Transaction.findAll({ where: { userId: userId } });
-  }
+    createTransaction(body: any): Observable<any> {
+        body.userId = this.cookiesService.decodeToken().userId;        
+        body.userName = this.cookiesService.decodeToken().userName;
+        return this.http.post(`${environment.API_URL}/transaction`, body);
+        
+    }
 
-  async getAllTransactions() {
-    return Transaction.findAll();
-  }
+    createTransactionForOneTime(body: any): Observable<any> {
+        return this.http.post(`${environment.API_URL}/transaction`, body);        
+    }
 
-  async updateTransaction(transId: number, data: any) {
-    const transaction = await Transaction.findByPk(transId);
-    if (!transaction) throw new Error('Transaction not found');
-    return transaction.update(data);
-  }
+    getAllTransaction(): Observable<any> {                
+        return this.http.get(`${environment.API_URL}/transaction`);
+    }
 
-  async deleteTransaction(transId: number) {
-    const transaction = await Transaction.findByPk(transId);
-    if (!transaction) throw new Error('Transaction not found');
-    await transaction.destroy();
-    return { message: 'Transaction deleted successfully' };
-  }
+    getTransactionsById(id:any): Observable<any> {                
+        return this.http.get(`${environment.API_URL}/transaction/${id}`);
+    }
+
+    geTransactionsByUserId(userId:any): Observable<any> {                
+        return this.http.get(`${environment.API_URL}/transaction/user/${userId}`);
+    }
+    
+    updateTransaction(body:any, id:any): Observable<any> {                
+        return this.http.put(`${environment.API_URL}/transaction/${id}`, body);
+    }
+
+    uploadTransactionReceipt(transId: any, receiptData: FormData): Observable<any> {        
+        return this.http.post(`${environment.API_URL}/payment/${transId}/upload-receipt`, receiptData);
+    }
 }
-
-export default new TransactionService();
