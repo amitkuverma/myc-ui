@@ -5,9 +5,9 @@
 import packageInfo from '../../package.json';
 
 export const environment = {
-  API_URL:'http://localhost:8082/api',
-  IMAGE_URL:'http://localhost:8082/',
-  UI_URL:'https://aimagicpower.com/',
+  API_URL:'http://localhost:8084/api',
+  IMAGE_URL:'http://localhost:8084/',
+  UI_URL:'https://dashboard.mycinama.com/',
   appVersion: packageInfo.version,
   production: false
 };
