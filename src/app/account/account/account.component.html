@@ -7,8 +7,8 @@
 
   <!-- If no accountDetailsList are present, show the 'Add Account' message and button -->
   <div *ngIf="!accountDetailsList.length && !isEditing && !isLoading" class="no-account-card">
-    <h3>Crypto addess not added</h3>
-    <p>Please add your Crypto address.</p>
+    <h3>Manage Account</h3>
+    <p>Please add your Account.</p>
   </div>
 
   <!-- Display existing accounts -->
@@ -16,15 +16,15 @@
     <div class="row">
       <div *ngFor="let account of accountDetailsList" class="account-card col-12">
         <div class="account-details" *ngIf="!isEditing">
-          <h4 class="pb-2">Manage Crypto</h4>
+          <h4 class="pb-2">Manage Account</h4>
           <table>
             <tr class="alert alert-info">
-              <th class="pl-2">Crypto Address:</th>
+              <th class="pl-2">Account Number</th>
               <td>{{ account.accountNumber }}</td>
             </tr>
           </table>
           <div class="account-actions">
-            <button class="btn btn-danger mr-3 px-4" (click)="deleteAccount(account.accId)">Delete</button>
+            <!-- <button class="btn btn-danger mr-3 px-4" (click)="deleteAccount(account.accId)">Delete</button> -->
             <button class="btn btn-primary px-5" (click)="editAccount(account)">Edit</button>
           </div>
         </div>
@@ -34,19 +34,19 @@
 
   <!-- Form for adding or editing account -->
   <div *ngIf="isEditing && !isLoading" class="account-form card p-3 p-md-4">
-    <h3>{{ formType }} Crypto Address</h3>
+    <h3>{{ formType }} Manage Account</h3>
     <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
       <!-- Bank Name Field -->
 
       <!-- Account Number Field -->
       <div class="form-group">
-        <label class="form-label">Crypto Address</label>
+        <label class="form-label">Account Number</label>
         <input class="form-control" type="text" formControlName="accountNumber" />
       </div>
 
       <!-- Form buttons -->
       <div class="form-actions">
-        <button class="btn btn-secondary mr-3" type="button" (click)="cancelEdit()">Cancel</button>
+        <button class="btn btn-secondary me-3" type="button" (click)="cancelEdit()">Cancel</button>
         <button class="btn btn-primary" type="submit">{{ formType }}</button>
       </div>
     </form>

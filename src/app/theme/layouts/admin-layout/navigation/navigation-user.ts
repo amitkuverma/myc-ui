@@ -54,7 +54,7 @@ export const NavigationUserItems: NavigationItem[] = [
 
       {
         id: 'crypto_address',
-        title: 'Manage Crypto',
+        title: 'Manage Account',
         type: 'item',
         classes: 'nav-item',
         url: '/my-crypto',
@@ -72,49 +72,49 @@ export const NavigationUserItems: NavigationItem[] = [
       }
     ]
   },
-  {
-    id: 'pdf',
-    title: 'PDF',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
-      {
-        id: 'pdf_plan',
-        title: 'Plan PDF',
-        type: 'item',
-        classes: 'nav-item',
-        icon: 'ant-design',
-        url: '/plan-pdf',
-        breadcrumbs: false
-      }
-    ]
-  },
-  {
-    id: 'ai_stake',
-    title: 'AI Stake',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
-      {
-        id: 'ai_plan',
-        title: 'AI Plan',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/packages',
-        icon: 'ant-design',
-        breadcrumbs: false
-      },
-      {
-        id: 'ai_report',
-        title: 'AI Plan Report',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/ai-plan-report',
-        icon: 'wallet',
-        breadcrumbs: false
-      },
-    ]
-  },
+  // {
+  //   id: 'pdf',
+  //   title: 'PDF',
+  //   type: 'group',
+  //   icon: 'icon-navigation',
+  //   children: [
+  //     {
+  //       id: 'pdf_plan',
+  //       title: 'Plan PDF',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       icon: 'ant-design',
+  //       url: '/plan-pdf',
+  //       breadcrumbs: false
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 'ai_stake',
+  //   title: 'AI Stake',
+  //   type: 'group',
+  //   icon: 'icon-navigation',
+  //   children: [
+  //     {
+  //       id: 'ai_plan',
+  //       title: 'AI Plan',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       url: '/packages',
+  //       icon: 'ant-design',
+  //       breadcrumbs: false
+  //     },
+  //     {
+  //       id: 'ai_report',
+  //       title: 'AI Plan Report',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       url: '/ai-plan-report',
+  //       icon: 'wallet',
+  //       breadcrumbs: false
+  //     },
+  //   ]
+  // },
   {
     id: 'team',
     title: 'Team',
@@ -166,7 +166,7 @@ export const NavigationUserItems: NavigationItem[] = [
     children: [
       {
         id: 'ai_report',
-        title: 'AI Earning',
+        title: 'Video rank income',
         type: 'item',
         classes: 'nav-item',
         url: '/ai-trade',
@@ -175,7 +175,7 @@ export const NavigationUserItems: NavigationItem[] = [
       },
       {
         id: 'daily_report',
-        title: 'Daily Earning',
+        title: 'Promoter',
         type: 'item',
         classes: 'nav-item',
         url: '/daily-report',
@@ -184,7 +184,7 @@ export const NavigationUserItems: NavigationItem[] = [
       },
       {
         id: 'one_time_report',
-        title: 'One Time Earning',
+        title: ' Financer club',
         type: 'item',
         classes: 'nav-item',
         url: '/one-time-earning',
@@ -193,7 +193,7 @@ export const NavigationUserItems: NavigationItem[] = [
       },
       {
         id: 'leadership_report',
-        title: 'Leaership Earning',
+        title: 'Apline income',
         type: 'item',
         classes: 'nav-item',
         url: '/leadership-report',
@@ -202,7 +202,7 @@ export const NavigationUserItems: NavigationItem[] = [
       },
       {
         id: 'royalty_report',
-        title: 'Royalty Earning',
+        title: 'Reward',
         type: 'item',
         classes: 'nav-item',
         url: '/royalty-report',
@@ -211,7 +211,7 @@ export const NavigationUserItems: NavigationItem[] = [
       },
       {
         id: 'star_report',
-        title: 'Star Bonus',
+        title: 'Bonanza gift',
         type: 'item',
         classes: 'nav-item',
         url: '/star-report',
@@ -220,10 +220,19 @@ export const NavigationUserItems: NavigationItem[] = [
       },
       {
         id: 'super_report',
-        title: 'Rewards',
+        title: 'Monthly gift',
         type: 'item',
         classes: 'nav-item',
         url: '/super-rewards',
+        icon: 'ant-design',
+        breadcrumbs: false
+      },
+      {
+        id: 'super_report',
+        title: 'Total income',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/total-rewards',
         icon: 'ant-design',
         breadcrumbs: false
       },
