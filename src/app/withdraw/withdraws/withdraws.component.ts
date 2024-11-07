@@ -94,11 +94,9 @@ export class WithdrawRequestComponent {
       (res) => {
         if (status === 'approved') {
           this.paymentService.getUserReferrals(this.selectedUser.userId).subscribe(
-            res => {
-              console.log(this.selectedUser.transactionAmount);
-              
-              res.earnWallet = (parseFloat(res.earnWallet) - parseFloat(this.selectedUser.transactionAmount)).toFixed(2);
-              res.totalWithdraw = (parseFloat(res.totalWithdraw) + parseFloat(this.selectedUser.transactionAmount)).toFixed(2);
+            res => {              
+              res.earnWallet = res.earnWallet - (this.selectedUser.transactionAmount + (this.selectedUser.transactionAmount * 0.1));
+              res.totalWithdraw = res.totalWithdraw + this.selectedUser.transactionAmount;
               console.log(res)
               this.paymentService.updateUserStatus(res, res.payId).subscribe(
                 res => {
@@ -113,12 +111,26 @@ export class WithdrawRequestComponent {
               )
             },
             error => {
-              this.successMessage = 'Fund rejected successfully!';
+              this.successMessage = 'Unable to withdraw amount!';
             }
           )
-
         } else {
-          this.successMessage = 'Fund rejected successfully!';
+          this.paymentService.getUserReferrals(this.selectedUser.userId).subscribe(
+            res => {              
+              res.earnWallet = res.earnWallet + this.selectedUser.transactionAmount;
+              this.paymentService.updateUserStatus(res, res.payId).subscribe(
+                res => {
+                  this.successMessage = 'Fund rejected successfully!';
+                },
+                error => {
+                  this.successMessage = 'Unable to add fund!';
+                }
+              )
+            },
+            error => {
+              this.successMessage = 'Unable to withdraw amount!';
+            }
+          )
         }
 
       },
