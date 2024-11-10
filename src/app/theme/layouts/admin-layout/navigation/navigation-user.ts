@@ -16,6 +16,7 @@ export interface NavigationItem {
   link?: string;
   description?: string;
   path?: string;
+  main?:boolean;
 }
 
 export const NavigationUserItems: NavigationItem[] = [
@@ -27,7 +28,7 @@ export const NavigationUserItems: NavigationItem[] = [
     children: [
       {
         id: 'default',
-        title: 'Default',
+        title: 'Dashboard',
         type: 'item',
         classes: 'nav-item',
         url: '/dashboard',
@@ -39,8 +40,8 @@ export const NavigationUserItems: NavigationItem[] = [
   {
     id: 'profile',
     title: 'Profile',
-    type: 'group',
-    icon: 'icon-navigation',
+    type: 'collapse',
+    icon: 'user',
     children: [
       {
         id: 'profile',
@@ -51,7 +52,6 @@ export const NavigationUserItems: NavigationItem[] = [
         icon: 'user',
         breadcrumbs: false
       },
-
       {
         id: 'crypto_address',
         title: 'Manage Account',
@@ -118,7 +118,7 @@ export const NavigationUserItems: NavigationItem[] = [
   {
     id: 'team',
     title: 'Team',
-    type: 'group',
+    type: 'collapse',
     icon: 'icon-navigation',
     children: [
       {
@@ -144,8 +144,8 @@ export const NavigationUserItems: NavigationItem[] = [
   {
     id: 'withdrawal',
     title: 'Withdrawal',
-    type: 'group',
-    icon: 'icon-navigation',
+    type: 'collapse',
+    icon: 'wallet',
     children: [
       {
         id: 'withdrawal',
@@ -156,12 +156,21 @@ export const NavigationUserItems: NavigationItem[] = [
         icon: 'wallet',
         breadcrumbs: false
       },
+      {
+        id: 'withdrawal-history',
+        title: 'Withdrawal User Report',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/withdrawal-history',
+        icon: 'wallet',
+        breadcrumbs: false
+      }
     ]
   },
   {
     id: 'income',
     title: 'Income Report',
-    type: 'group',
+    type: 'collapse',
     icon: 'icon-navigation',
     children: [
       {
@@ -241,7 +250,7 @@ export const NavigationUserItems: NavigationItem[] = [
   {
     id: 'deposit_wallet',
     title: 'Deposit wallet',
-    type: 'group',
+    type: 'collapse',
     icon: 'icon-navigation',
     children: [
       {
@@ -276,7 +285,7 @@ export const NavigationUserItems: NavigationItem[] = [
   {
     id: 'deposit_histey',
     title: 'Deposit/Credit Report',
-    type: 'group',
+    type: 'collapse',
     icon: 'icon-navigation',
     children: [
       {

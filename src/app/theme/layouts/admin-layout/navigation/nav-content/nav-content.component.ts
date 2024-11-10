@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 // project import
 import { NavigationItem, NavigationItems } from '../navigation';
+import { environment } from 'src/environments/environment';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { NavCollapseComponent } from './nav-collapse/nav-collapse.component';
 import { NavGroupComponent } from './nav-group/nav-group.component';
@@ -23,7 +24,6 @@ import {
   BgColorsOutline,
   AntDesignOutline
 } from '@ant-design/icons-angular/icons';
-import { environment } from 'src/environments/environment.prod';
 import { CookieService } from 'src/services/cookie.service';
 import { NavigationUserItems } from '../navigation-user';
 
@@ -44,7 +44,7 @@ export class NavContentComponent implements OnInit {
   title = 'Demo application for version numbering';
   currentApplicationVersion = environment.appVersion;
 
-  navigation:any;
+  navigation = NavigationItems;
   windowWidth = window.innerWidth;
 
   // Constructor
@@ -67,14 +67,15 @@ export class NavContentComponent implements OnInit {
         QuestionOutline
       ]
     );
-    this.navigations =  this.cookies.isAdmin()? NavigationItems: NavigationUserItems;;
+    this.navigations = this.cookies.isAdmin() ? NavigationItems : NavigationUserItems ;
+    
   }
 
   // Life cycle events
   ngOnInit() {
-    // if (this.windowWidth < 1025) {
-    //   (document.querySelector('.coded-navbar') as HTMLDivElement).classList.add('menupos-static');
-    // }
+    if (this.windowWidth < 1025) {
+      (document.querySelector('.coded-navbar') as HTMLDivElement).classList.add('menupos-static');
+    }
   }
 
   fireOutClick() {
@@ -102,10 +103,9 @@ export class NavContentComponent implements OnInit {
     }
   }
 
-  // navMob() {
-  //   const navbar = document.querySelector('app-navigation.coded-navbar');
-  //   if (this.windowWidth < 1025 && navbar && navbar.classList.contains('mob-open')) {
-  //     this.NavCollapsedMob.emit();
-  //   }
-  // }
+  navMob() {
+    if (this.windowWidth < 1025 && document.querySelector('app-navigation.coded-navbar').classList.contains('mob-open')) {
+      this.NavCollapsedMob.emit();
+    }
+  }
 }

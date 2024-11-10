@@ -16,6 +16,7 @@ export interface NavigationItem {
   link?: string;
   description?: string;
   path?: string;
+  main?:boolean;
 }
 
 export const NavigationItems: NavigationItem[] = [
