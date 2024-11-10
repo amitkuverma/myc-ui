@@ -22,7 +22,12 @@ import {
   FontSizeOutline,
   ProfileOutline,
   BgColorsOutline,
-  AntDesignOutline
+  AntDesignOutline,
+  HistoryOutline,
+  TeamOutline,
+  SettingOutline,
+  PayCircleOutline,
+  WechatWorkOutline
 } from '@ant-design/icons-angular/icons';
 import { CookieService } from 'src/services/cookie.service';
 import { NavigationUserItems } from '../navigation-user';
@@ -64,7 +69,12 @@ export class NavContentComponent implements OnInit {
         BgColorsOutline,
         AntDesignOutline,
         ChromeOutline,
-        QuestionOutline
+        QuestionOutline,
+        HistoryOutline,
+        TeamOutline,
+        SettingOutline,
+        PayCircleOutline,
+        WechatWorkOutline
       ]
     );
     this.navigations = this.cookies.isAdmin() ? NavigationItems : NavigationUserItems ;

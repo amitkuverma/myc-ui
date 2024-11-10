@@ -41,7 +41,7 @@ export const NavigationUserItems: NavigationItem[] = [
     id: 'profile',
     title: 'Setting',
     type: 'collapse',
-    icon: 'user',
+    icon: 'setting',
     children: [
       {
         id: 'profile',
@@ -119,7 +119,7 @@ export const NavigationUserItems: NavigationItem[] = [
     id: 'team',
     title: 'Network Team',
     type: 'collapse',
-    icon: 'icon-navigation',
+    icon: 'team',
     children: [
       {
         id: 'direct_team',
@@ -145,7 +145,7 @@ export const NavigationUserItems: NavigationItem[] = [
     id: 'income',
     title: 'Running Report',
     type: 'collapse',
-    icon: 'icon-navigation',
+    icon: 'history',
     children: [
       {
         id: 'ai_report',
@@ -225,7 +225,7 @@ export const NavigationUserItems: NavigationItem[] = [
     id: 'deposit_wallet',
     title: 'Deposit wallet',
     type: 'collapse',
-    icon: 'icon-navigation',
+    icon: 'wallet',
     children: [
       {
         id: 'add_fund',
@@ -302,7 +302,7 @@ export const NavigationUserItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/active-user',
-        icon: 'dashboard',
+        icon: 'user',
         breadcrumbs: false
       }
     ]
@@ -319,7 +319,7 @@ export const NavigationUserItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/main-wallet',
-        icon: 'dashboard',
+        icon: 'wallet',
         breadcrumbs: false
       }
     ]
@@ -341,7 +341,7 @@ export const NavigationUserItems: NavigationItem[] = [
       },
       {
         id: 'withdrawal-history',
-        title: 'Withdrawal User Report',
+        title: 'Withdrawal Report',
         type: 'item',
         classes: 'nav-item',
         url: '/withdrawal-history',
@@ -362,7 +362,7 @@ export const NavigationUserItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/payout',
-        icon: 'dashboard',
+        icon: 'pay-circle',
         breadcrumbs: false
       }
     ]
@@ -379,7 +379,7 @@ export const NavigationUserItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/support',
-        icon: 'dashboard',
+        icon: 'question',
         breadcrumbs: false
       }
     ]
@@ -396,7 +396,7 @@ export const NavigationUserItems: NavigationItem[] = [
         type: 'item',
         classes: 'nav-item',
         url: '/chating',
-        icon: 'dashboard',
+        icon: 'wechat-work',
         breadcrumbs: false
       }
     ]
