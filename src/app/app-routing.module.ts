@@ -162,6 +162,26 @@ const routes: Routes = [
         path: 'payment-status/:userId',
         loadComponent: () => import('./account/payment-status/payment-status.component').then((c) => c.PaymentStatusComponent)
       },
+      {
+        path: 'main-wallet',
+        loadComponent: () => import('./main-wallet/main-wallet.component').then((c) => c.MainWalletComponent)
+      },
+      {
+        path: 'active-user',
+        loadComponent: () => import('./active-user/active-user.component').then((c) => c.ActiveUserComponent)
+      },
+      {
+        path: 'payout',
+        loadComponent: () => import('./payout/payout.component').then((c) => c.PayoutComponent)
+      },
+      {
+        path: 'support',
+        loadComponent: () => import('./support/support.component').then((c) => c.SupportComponent)
+      },
+      {
+        path: 'chating',
+        loadComponent: () => import('./chating/chating.component').then((c) => c.ChatingComponent)
+      },
     ]
   },
   {

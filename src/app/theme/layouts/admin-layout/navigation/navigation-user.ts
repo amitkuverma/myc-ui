@@ -16,30 +16,30 @@ export interface NavigationItem {
   link?: string;
   description?: string;
   path?: string;
-  main?:boolean;
+  main?: boolean;
 }
 
 export const NavigationUserItems: NavigationItem[] = [
-  {
-    id: 'dashboard',
-    title: 'Dashboard',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
-      {
-        id: 'default',
-        title: 'Dashboard',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/dashboard',
-        icon: 'dashboard',
-        breadcrumbs: false
-      }
-    ]
-  },
+  // {
+  //   id: 'dashboard',
+  //   title: 'Dashboard',
+  //   type: 'group',
+  //   icon: 'icon-navigation',
+  //   children: [
+  //     {
+  //       id: 'default',
+  //       title: 'Setting',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       url: '/dashboard',
+  //       icon: 'dashboard',
+  //       breadcrumbs: false
+  //     }
+  //   ]
+  // },
   {
     id: 'profile',
-    title: 'Profile',
+    title: 'Setting',
     type: 'collapse',
     icon: 'user',
     children: [
@@ -117,7 +117,7 @@ export const NavigationUserItems: NavigationItem[] = [
   // },
   {
     id: 'team',
-    title: 'Team',
+    title: 'Network Team',
     type: 'collapse',
     icon: 'icon-navigation',
     children: [
@@ -142,34 +142,8 @@ export const NavigationUserItems: NavigationItem[] = [
     ]
   },
   {
-    id: 'withdrawal',
-    title: 'Withdrawal',
-    type: 'collapse',
-    icon: 'wallet',
-    children: [
-      {
-        id: 'withdrawal',
-        title: 'Withdrawal',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/withdrawal',
-        icon: 'wallet',
-        breadcrumbs: false
-      },
-      {
-        id: 'withdrawal-history',
-        title: 'Withdrawal User Report',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/withdrawal-history',
-        icon: 'wallet',
-        breadcrumbs: false
-      }
-    ]
-  },
-  {
     id: 'income',
-    title: 'Income Report',
+    title: 'Running Report',
     type: 'collapse',
     icon: 'icon-navigation',
     children: [
@@ -282,48 +256,149 @@ export const NavigationUserItems: NavigationItem[] = [
       },
     ]
   },
+  // {
+  //   id: 'deposit_histey',
+  //   title: 'Deposit/Credit Report',
+  //   type: 'collapse',
+  //   icon: 'icon-navigation',
+  //   children: [
+  //     {
+  //       id: 'p2p_transfer_history',
+  //       title: 'P2P Report',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       url: '/p2p-report',
+  //       icon: 'ant-design',
+  //       breadcrumbs: false
+  //     }, {
+  //       id: 'add_fund_history',
+  //       title: 'Add Fund History',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       url: '/fund-history',
+  //       icon: 'ant-design',
+  //       breadcrumbs: false
+  //     },
+  //     {
+  //       id: 'transfer_deposit_history',
+  //       title: 'Deposit wallet Report',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       url: '/transfer-deposit-wallet-report',
+  //       icon: 'ant-design',
+  //       breadcrumbs: false
+  //     }
+  //   ]
+  // },
   {
-    id: 'deposit_histey',
-    title: 'Deposit/Credit Report',
-    type: 'collapse',
+    id: 'main_wallet',
+    title: 'Activate ID',
+    type: 'group',
     icon: 'icon-navigation',
     children: [
       {
-        id: 'p2p_transfer_history',
-        title: 'P2P Report',
+        id: 'ex_main_wallet',
+        title: 'Activate ID',
         type: 'item',
         classes: 'nav-item',
-        url: '/p2p-report',
-        icon: 'ant-design',
-        breadcrumbs: false
-      }, {
-        id: 'add_fund_history',
-        title: 'Add Fund History',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/fund-history',
-        icon: 'ant-design',
-        breadcrumbs: false
-      },
-      {
-        id: 'transfer_deposit_history',
-        title: 'Deposit wallet Report',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/transfer-deposit-wallet-report',
-        icon: 'ant-design',
+        url: '/active-user',
+        icon: 'dashboard',
         breadcrumbs: false
       }
     ]
-  }
-  // { label: 'Dashboard', route: '/dashboard' },
-  // {
-  //   label: 'Profile',
-  //   children: [
-  //     { label: 'View Profile', route: '/profile/view' },
-  //     { label: 'Edit Profile', route: '/profile/edit' }
-  //   ]
-  // },
-  // { label: 'Settings', route: '/settings' },
-  // { label: 'Logout', route: '/logout' }
-];;
+  },
+  {
+    id: 'main_wallet',
+    title: 'Payout',
+    type: 'group',
+    icon: 'icon-navigation',
+    children: [
+      {
+        id: 'ex_main_wallet',
+        title: 'Main Wallet',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/main-wallet',
+        icon: 'dashboard',
+        breadcrumbs: false
+      }
+    ]
+  },
+  {
+    id: 'withdrawal',
+    title: 'Withdrawal',
+    type: 'collapse',
+    icon: 'wallet',
+    children: [
+      {
+        id: 'withdrawal',
+        title: 'Withdrawal',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/withdrawal',
+        icon: 'wallet',
+        breadcrumbs: false
+      },
+      {
+        id: 'withdrawal-history',
+        title: 'Withdrawal User Report',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/withdrawal-history',
+        icon: 'wallet',
+        breadcrumbs: false
+      }
+    ]
+  },
+  {
+    id: 'payout',
+    title: 'Payout',
+    type: 'group',
+    icon: 'icon-navigation',
+    children: [
+      {
+        id: 'ex_payout',
+        title: 'Payout',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/payout',
+        icon: 'dashboard',
+        breadcrumbs: false
+      }
+    ]
+  },
+  {
+    id: 'support',
+    title: 'Support',
+    type: 'group',
+    icon: 'icon-navigation',
+    children: [
+      {
+        id: 'ex_support',
+        title: 'Support',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/support',
+        icon: 'dashboard',
+        breadcrumbs: false
+      }
+    ]
+  },
+  {
+    id: 'chating',
+    title: 'Exchange Chating',
+    type: 'group',
+    icon: 'icon-navigation',
+    children: [
+      {
+        id: 'ex_chating',
+        title: 'Exchange Chating',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/chating',
+        icon: 'dashboard',
+        breadcrumbs: false
+      }
+    ]
+  },
+];
