@@ -106,7 +106,7 @@ export default class RegisterComponent {
       (response) => {
         this.userInfo = response;
         const login = {
-          userId: response.userId,
+          email: response.email,
           password: this.signupForm.get('password').value
         }
         this.authService.login(login).subscribe(
