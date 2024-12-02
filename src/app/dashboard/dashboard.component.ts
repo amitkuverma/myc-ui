@@ -80,7 +80,7 @@ export class DashboardComponent {
       this.filteredUsers = data.referrals;
       this.totalTeam = data.referrals.length;
       this.activeTeam = data.referrals.filter((item: any) => item.status === 'active');
-      this.referralLink = `https://aimagicpower.com/register?referralCode=${this.users.referralCode}`;
+      this.referralLink = `https://dashboard.mycinemadigital.com/register?referralCode=${this.users.referralCode}`;
     });
   }
 
